@@ -2,22 +2,27 @@
 
 ClassBridge is a sleek, mobile-friendly classroom accessibility demo with two views:
 
-- **Deaf mode** — streaming physics captions, a sign-language translation panel, and a sound-alert ticker.
-- **Blind mode** — streaming scene descriptions, whiteboard OCR, and a mock voice Q&A interface.
+- **Deaf mode** — physics captions with a typing effect, speaker/timestamp metadata, inline signing poses, a sign translation output, and a sound-alert ticker.
+- **Blind mode** — streaming scene descriptions, whiteboard OCR equations, a repeat-last-equation control, and a mock voice Q&A flow.
 
 ## Open it
 
 1. Download or clone this repository.
 2. Double-click `index.html`.
-3. It opens directly in your browser from `file://` — no server or build step is required.
+3. It opens directly in a browser from `file://`; no server, build step, or installation is required.
 
-It is responsive and works on phones as well as desktop browsers.
+The layout is responsive and works on phones as well as desktop browsers.
 
-## Important
+## 100% mock/demo
 
-This is **100% mock for demo purposes**. It does not use a camera, microphone, network request, API, CDN, external font, or external library. All CSS and JavaScript are inline in `index.html`, and the simulated streams are driven by local timers. Voice answers and accessibility events are canned examples, not live recognition.
+This is **100% mock/demo data**. It does not use a camera, microphone, network request, API, CDN, external font, or external library. All CSS and JavaScript are inline in `index.html`; the captions, signs, alerts, scene descriptions, OCR, and voice answers are canned examples driven by local timers. It has zero external dependencies.
+
+## Repository
+
+The known repository URL is [github.com/dominionochai/classbridge-demo](https://github.com/dominionochai/classbridge-demo).
 
 ## Files
 
-- `index.html` — the complete self-contained app.
-- `LICENSE` — MIT License.
+- `index.html` — the complete self-contained single-file app.
+- `README.md` — this overview and file-opening instructions.
+- `LICENSE` — the preserved MIT License.

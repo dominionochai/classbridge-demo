@@ -1,55 +1,329 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0a1018">
-<title>ClassBridge — Live Demo</title>
-<style>
-:root{--bg:#080d14;--panel:#101923;--panel2:#151f2b;--line:#243342;--text:#edf7ff;--muted:#8da3b5;--cyan:#52e7e0;--green:#7bffa9;--violet:#b99aff;--amber:#ffc766;--danger:#ff6f8d;--shadow:0 18px 50px #0006}*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:radial-gradient(circle at 90% -10%,#193348 0,#080d14 40%),var(--bg);color:var(--text);font:15px/1.45 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}body{padding:20px 14px 36px}.shell{max-width:940px;margin:auto}.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}.brand{display:flex;align-items:center;gap:12px}.mark{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--cyan),var(--violet));display:grid;place-items:center;color:#071018;font-weight:900;font-size:18px;box-shadow:0 0 28px #52e7e044}.eyebrow{color:var(--muted);font-size:11px;letter-spacing:.18em;text-transform:uppercase}.brand h1{font-size:22px;margin:1px 0 0;letter-spacing:-.03em}.live{border:1px solid #7bffa988;color:var(--green);border-radius:999px;padding:7px 10px;font-size:11px;font-weight:800;letter-spacing:.1em;white-space:nowrap;background:#7bffa910}.live i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:6px;box-shadow:0 0 12px var(--green);animation:blink 1.5s infinite}.hero{margin-bottom:18px}.hero h2{font-size:clamp(28px,6vw,48px);line-height:1.02;letter-spacing:-.06em;margin:0 0 9px}.hero p{color:var(--muted);margin:0;max-width:620px}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:6px;background:#0c141d;border:1px solid var(--line);border-radius:16px;margin:24px 0 14px}.tab{border:0;border-radius:11px;background:transparent;color:var(--muted);padding:12px;font:inherit;font-weight:750;cursor:pointer}.tab.active.deaf{background:#12332f;color:var(--cyan);box-shadow:inset 0 0 0 1px #52e7e044}.tab.active.blind{background:#2a2045;color:var(--violet);box-shadow:inset 0 0 0 1px #b99aff44}.mode{display:none}.mode.active{display:block}.grid{display:grid;grid-template-columns:1.15fr .85fr;gap:14px}.card{background:linear-gradient(150deg,#131e29,#0e161f);border:1px solid var(--line);border-radius:18px;padding:17px;box-shadow:var(--shadow)}.card h3{font-size:14px;margin:0 0 4px;letter-spacing:.01em}.sub{color:var(--muted);font-size:12px;margin:0 0 15px}.card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.icon{font-size:21px}.stream{min-height:154px;display:flex;flex-direction:column;gap:10px}.stream-row{display:flex;gap:9px;align-items:flex-start;padding:9px 0;border-bottom:1px solid #ffffff0b}.stream-row:last-child{border-bottom:0}.avatar{width:24px;height:24px;flex:none;border-radius:8px;background:#52e7e01a;color:var(--cyan);display:grid;place-items:center;font-size:12px}.stream-text{flex:1}.stream-text strong{display:block;font-size:13px}.meta{font-size:10px;color:var(--muted);margin-top:2px}.typing:after{content:"▌";color:var(--cyan);animation:blink .7s infinite}.sign-wrap{display:flex;align-items:center;gap:16px;margin:10px 0 17px}.hand{width:84px;height:84px;border-radius:50%;display:grid;place-items:center;font-size:45px;background:radial-gradient(circle,#52e7e033,#52e7e000 68%);border:1px solid #52e7e055;animation:pulse 2s infinite}.sign-output{color:var(--cyan);font-weight:750}.chips{display:flex;flex-wrap:wrap;gap:7px}.chip{border:1px solid #52e7e055;color:#a9fff4;background:#52e7e00c;border-radius:999px;padding:6px 9px;font-size:11px}.ticker{display:flex;flex-direction:column;gap:9px}.ticker-row{display:flex;justify-content:space-between;gap:12px;padding:9px 10px;border-radius:10px;background:#ffffff05;font-size:12px}.ticker-row span:first-child{color:#d8e6ee}.ticker-row span:first-child b{color:var(--amber);margin-right:7px}.ticker-row time{color:var(--muted);font-variant-numeric:tabular-nums}.violet .stream-row{border-color:#b99aff14}.violet .avatar{background:#b99aff1c;color:var(--violet)}.violet .typing:after{color:var(--violet)}.ocr{display:flex;flex-direction:column;gap:8px;min-height:140px}.equation{padding:12px 14px;border-left:3px solid var(--amber);background:#ffc7660b;border-radius:4px 10px 10px 4px;color:#ffe0a0;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:15px}.qa{margin-top:14px}.qa-row{display:flex;gap:8px}.qa input{min-width:0;flex:1;background:#0b1219;border:1px solid var(--line);border-radius:10px;padding:11px 12px;color:var(--text);font:inherit;outline:none}.qa input:focus{border-color:var(--violet)}button.action{border:1px solid #b99aff55;background:#b99aff17;color:#dbcfff;border-radius:10px;padding:10px 12px;font:inherit;font-weight:750;cursor:pointer;white-space:nowrap}button.action:hover{background:#b99aff29}.answer{min-height:22px;color:var(--amber);margin:10px 0 0;font-size:13px}.status{color:var(--muted);font-size:11px;margin-top:8px}.footer{text-align:center;color:#647988;font-size:11px;margin:22px 0 0}.hidden{display:none!important}@keyframes blink{50%{opacity:.35}}@keyframes pulse{50%{transform:scale(1.07);box-shadow:0 0 35px #52e7e033}}@media(max-width:700px){body{padding:15px 11px 28px}.topbar{margin-bottom:18px}.grid{grid-template-columns:1fr}.card{padding:14px}.hero h2{font-size:36px}.qa-row{flex-direction:column}.qa button{width:100%}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>ClassBridge · accessible classroom demo</title>
+  <style>
+    :root {
+      --ink: #f4f7fb;
+      --muted: #91a0b5;
+      --line: rgba(255,255,255,.1);
+      --panel: rgba(17,24,39,.86);
+      --panel-strong: #121b2c;
+      --cyan: #5de5ee;
+      --green: #67f4b1;
+      --violet: #b99aff;
+      --amber: #ffd166;
+      --danger: #ff7e94;
+      --shadow: 0 22px 70px rgba(0,0,0,.34);
+    }
+    * { box-sizing: border-box; }
+    html { min-width: 320px; background: #080d17; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background: radial-gradient(circle at 84% 0%, #182947 0, transparent 34rem), #080d17;
+      font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    .app { width: min(1120px, 100%); margin: 0 auto; padding: 22px 18px 40px; }
+    header { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; margin-bottom: 26px; }
+    .brand-line { display: flex; align-items: center; gap: 9px; margin-bottom: 7px; }
+    .brand { font-size: 24px; font-weight: 750; letter-spacing: -.04em; }
+    .badge { display: inline-flex; align-items: center; gap: 6px; border: 1px solid rgba(103,244,177,.35); border-radius: 999px; padding: 5px 9px; color: var(--green); background: rgba(103,244,177,.08); font-size: 10px; font-weight: 800; letter-spacing: .1em; }
+    .live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 12px var(--green); }
+    .eyebrow { margin: 0; color: var(--muted); font-size: 11px; font-weight: 750; letter-spacing: .13em; text-transform: uppercase; }
+    .local-note { color: var(--muted); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+    .mode-switch { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 6px; margin-bottom: 18px; border: 1px solid var(--line); border-radius: 14px; background: rgba(16,24,40,.75); }
+    .tab { border: 0; border-radius: 10px; padding: 13px 12px; color: var(--muted); background: transparent; font-weight: 750; transition: .2s ease; }
+    .tab[aria-selected="true"] { color: #07151b; background: linear-gradient(120deg, var(--cyan), var(--green)); box-shadow: 0 8px 24px rgba(93,229,238,.2); }
+    body[data-mode="blind"] .tab[aria-selected="true"] { color: #20162b; background: linear-gradient(120deg, var(--violet), var(--amber)); box-shadow: 0 8px 24px rgba(185,154,255,.2); }
+    .mode-panel { display: none; animation: rise .3s ease both; }
+    .mode-panel.active { display: block; }
+    @keyframes rise { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
+    .mode-head { display: flex; align-items: end; justify-content: space-between; gap: 12px; margin: 0 2px 15px; }
+    .mode-head h2 { margin: 2px 0 0; font-size: clamp(23px, 4vw, 31px); letter-spacing: -.045em; }
+    .deaf .mode-head h2 { color: var(--cyan); }
+    .blind .mode-head h2 { color: var(--violet); }
+    .status { display: inline-flex; align-items: center; gap: 7px; color: var(--muted); font-size: 11px; }
+    .status i { width: 7px; height: 7px; border-radius: 50%; background: currentColor; box-shadow: 0 0 10px currentColor; }
+    .deaf .status { color: var(--green); } .blind .status { color: var(--amber); }
+    .deaf-grid, .blind-grid { display: grid; grid-template-columns: 1.35fr .85fr; gap: 15px; }
+    .stack { display: grid; gap: 15px; }
+    .panel { border: 1px solid var(--line); border-radius: 18px; padding: 18px; background: linear-gradient(145deg, rgba(22,32,51,.96), rgba(13,19,32,.92)); box-shadow: var(--shadow); overflow: hidden; }
+    .panel-label { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 18px; color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .panel-label strong { color: var(--ink); }
+    .signal { color: var(--cyan); }
+    .caption-meta { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 13px; color: var(--muted); font-size: 12px; }
+    .speaker { color: var(--green); font-weight: 750; }
+    .caption { min-height: 96px; display: flex; align-items: center; margin: 0; font-size: clamp(25px, 5vw, 43px); font-weight: 730; line-height: 1.1; letter-spacing: -.045em; }
+    .caption::after { content: "▌"; margin-left: 4px; color: var(--cyan); font-size: .7em; animation: blink 1s steps(2) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .meter { height: 4px; overflow: hidden; border-radius: 99px; background: rgba(255,255,255,.07); }
+    .meter span { display: block; width: 42%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--cyan), var(--green)); animation: meter 2s linear infinite; }
+    @keyframes meter { from { transform: translateX(-110%); } to { transform: translateX(260%); } }
+    .avatar-panel { display: flex; flex-direction: column; min-height: 335px; }
+    .avatar-art { min-height: 192px; display: grid; place-items: center; border: 1px solid rgba(93,229,238,.12); border-radius: 14px; background: radial-gradient(circle, rgba(93,229,238,.13), transparent 62%), #0b1523; }
+    .avatar-art svg { width: min(240px, 80%); height: 188px; filter: drop-shadow(0 12px 17px rgba(93,229,238,.22)); animation: sign-pulse .8s ease both; }
+    @keyframes sign-pulse { from { opacity: .2; transform: scale(.9) rotate(-4deg); } to { opacity: 1; transform: scale(1) rotate(0); } }
+    .avatar-label { padding: 14px 0 0; color: var(--green); font-size: 17px; font-weight: 750; }
+    .avatar-label::before { content: "✦ "; color: var(--cyan); }
+    .sign-chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 13px; }
+    .sign-chip { border: 1px solid rgba(93,229,238,.16); border-radius: 8px; padding: 5px 8px; color: var(--muted); background: rgba(93,229,238,.04); font-size: 10px; font-weight: 800; letter-spacing: .08em; }
+    .sign-chip.current { border-color: var(--green); color: #071c18; background: var(--green); }
+    .translation { margin: 0; color: var(--ink); font-size: 18px; font-weight: 650; }
+    .translation span { display: block; margin-bottom: 4px; color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .ticker { display: grid; gap: 10px; max-height: 212px; overflow: hidden; }
+    .ticker-row { display: grid; grid-template-columns: 24px 1fr auto; align-items: center; gap: 8px; color: #dce5f2; font-size: 12px; }
+    .buzz { display: grid; place-items: center; width: 22px; height: 22px; border: 1px solid rgba(255,209,102,.34); border-radius: 7px; color: var(--amber); background: rgba(255,209,102,.1); font-size: 13px; }
+    .tick-time { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 10px; }
+    .blind-grid { grid-template-columns: 1fr 1fr; }
+    .blind .panel { background: linear-gradient(145deg, rgba(31,25,52,.95), rgba(17,18,34,.94)); }
+    .blind .signal { color: var(--violet); }
+    .scene-text, .ocr-text { min-height: 72px; margin: 0; color: #eee8ff; font-size: clamp(21px, 3.2vw, 29px); font-weight: 680; line-height: 1.17; letter-spacing: -.035em; }
+    .ocr-text { color: var(--amber); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: clamp(20px, 3vw, 28px); }
+    .stream-foot { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; color: var(--muted); font-size: 11px; }
+    .voice-panel { grid-column: 1 / -1; }
+    .voice-log { min-height: 102px; display: grid; align-content: start; gap: 8px; padding: 12px; border: 1px solid rgba(185,154,255,.14); border-radius: 12px; background: rgba(8,10,20,.35); }
+    .qa-line { display: flex; gap: 8px; color: #e9e3ff; font-size: 13px; }
+    .qa-line strong { min-width: 68px; color: var(--violet); }
+    .qa-line.user strong { color: var(--amber); }
+    .qa-line.pending span { color: var(--amber); animation: blink 1s steps(2) infinite; }
+    .ask-row { display: flex; gap: 8px; margin-top: 12px; }
+    input { min-width: 0; flex: 1; border: 1px solid rgba(185,154,255,.22); border-radius: 10px; outline: 0; padding: 11px 12px; color: var(--ink); background: rgba(5,8,16,.6); }
+    input:focus { border-color: var(--violet); box-shadow: 0 0 0 3px rgba(185,154,255,.12); }
+    .action { border: 1px solid rgba(185,154,255,.35); border-radius: 10px; padding: 10px 14px; color: #1c1429; background: var(--violet); font-weight: 800; white-space: nowrap; }
+    .action.alt { color: var(--amber); background: rgba(255,209,102,.08); border-color: rgba(255,209,102,.35); }
+    .quick { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 11px; }
+    .quick button { border: 1px solid rgba(255,255,255,.12); border-radius: 9px; padding: 7px 9px; color: var(--muted); background: rgba(255,255,255,.04); font-size: 11px; }
+    .quick button:hover { color: var(--ink); border-color: var(--violet); }
+    footer { margin-top: 24px; color: var(--muted); text-align: center; font-size: 11px; }
+    @media (max-width: 720px) {
+      .app { padding: 16px 12px 30px; }
+      header { margin-bottom: 19px; } .local-note { display: none; }
+      .deaf-grid, .blind-grid { grid-template-columns: 1fr; }
+      .avatar-panel { min-height: auto; } .voice-panel { grid-column: auto; }
+      .caption { min-height: 112px; }
+    }
+    @media (max-width: 430px) {
+      .panel { padding: 14px; border-radius: 15px; }
+      .mode-head { align-items: flex-start; flex-direction: column; }
+      .ask-row { flex-wrap: wrap; } .ask-row input { flex-basis: 100%; }
+    }
+  </style>
 </head>
-<body>
-<main class="shell">
-<header class="topbar"><div class="brand"><div class="mark">CB</div><div><div class="eyebrow">Inclusive classroom tools</div><h1>ClassBridge</h1></div></div><div class="live"><i></i>LIVE · demo</div></header>
-<section class="hero"><h2>Every learner in the room.</h2><p>A calm, real-time accessibility bridge for class moments — designed for a quick, offline walkthrough.</p></section>
-<nav class="tabs" aria-label="Accessibility modes"><button class="tab active deaf" data-mode="deaf" aria-selected="true">Deaf mode</button><button class="tab blind" data-mode="blind" aria-selected="false">Blind mode</button></nav>
-<section id="deaf" class="mode active" aria-label="Deaf mode">
-<div class="grid">
-<article class="card"><div class="card-head"><div><h3>Physics captions</h3><p class="sub">Live classroom speech · streaming</p></div><div class="icon">◉</div></div><div id="captions" class="stream" aria-live="polite"></div></article>
-<article class="card"><div class="card-head"><div><h3>Sign-language panel</h3><p class="sub">Camera translation · ready</p></div><div class="icon">✋</div></div><div class="sign-wrap"><div class="hand" aria-hidden="true">✋</div><div><div class="eyebrow">Translation output</div><div class="sign-output">Student signed: Can you repeat the formula?</div></div></div><div class="chips"><span class="chip">HELP</span><span class="chip">YES</span><span class="chip">REPEAT</span><span class="chip">QUESTION</span><span class="chip">THANK YOU</span></div></article>
-<article class="card"><div class="card-head"><div><h3>Sound alert ticker</h3><p class="sub">Environmental awareness</p></div><div class="icon">🔔</div></div><div id="alerts" class="ticker" aria-live="polite"></div></article>
-</div></section>
-<section id="blind" class="mode" aria-label="Blind mode">
-<div class="grid">
-<article class="card violet"><div class="card-head"><div><h3>Scene descriptions</h3><p class="sub">Vision assistant · streaming</p></div><div class="icon">◌</div></div><div id="scenes" class="stream" aria-live="polite"></div></article>
-<article class="card violet"><div class="card-head"><div><h3>Whiteboard OCR</h3><p class="sub">Text detected on board</p></div><div class="icon">▤</div></div><div id="ocr" class="ocr" aria-live="polite"></div><button id="repeat" class="action" type="button">↻ Repeat last equation</button></article>
-<article class="card violet" style="grid-column:1/-1"><div class="card-head"><div><h3>Mock voice Q&amp;A</h3><p class="sub">Ask about the room or the lesson</p></div><div class="icon">◖</div></div><div class="qa"><div class="qa-row"><input id="question" aria-label="Voice question" placeholder="Try: Where is the red beaker?" autocomplete="off"><button id="ask" class="action" type="button">Start listening</button></div><div id="answer" class="answer" aria-live="polite"></div><div id="status" class="status">Microphone ready · 100% mock</div></div></article>
-</div></section>
-<p class="footer">Offline demo · no camera, microphone, network, or external dependencies</p>
-</main>
-<script>
-(function(){
-'use strict';
-var captionMessages=['Good morning class','Today: velocity and acceleration','Open your textbooks to page 42','Velocity is displacement over time','Who can tell me the formula?'];
-var sceneMessages=['Teacher at the whiteboard','Diagram: triangle with labeled sides','Someone raised their hand in row 2'];
-var alertMessages=['Fire alarm detected','Bell rang','Name called: Tobi','Applause detected'];
-var equations=['v = d/t','a = (v-u)/t','velocity = displacement / time'];
-var captionIndex=0,sceneIndex=0,alertIndex=0,ocrIndex=0,lastEquation=equations[0];
-function now(){return new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'});}
-function typeInto(el,text,done){el.textContent='';var i=0;var timer=setInterval(function(){el.textContent=text.slice(0,++i);if(i>=text.length){clearInterval(timer);if(done){done();}}},24);}
-function row(parent,label,text,kind){var wrap=document.createElement('div');wrap.className='stream-row';var avatar=document.createElement('div');avatar.className='avatar';avatar.textContent=kind==='scene'?'◌':'CC';var body=document.createElement('div');body.className='stream-text';var strong=document.createElement('strong');strong.className='typing';var meta=document.createElement('div');meta.className='meta';meta.textContent=label+' · '+now();body.appendChild(strong);body.appendChild(meta);wrap.appendChild(avatar);wrap.appendChild(body);parent.insertBefore(wrap,parent.firstChild);while(parent.children.length>3)parent.removeChild(parent.lastChild);typeInto(strong,text);}
-function captionTick(){row(document.getElementById('captions'),'Teacher',captionMessages[captionIndex],'caption');captionIndex=(captionIndex+1)%captionMessages.length;}
-function sceneTick(){row(document.getElementById('scenes'),'Scene assistant',sceneMessages[sceneIndex],'scene');sceneIndex=(sceneIndex+1)%sceneMessages.length;}
-function alertTick(){var parent=document.getElementById('alerts');var item=document.createElement('div');item.className='ticker-row';var left=document.createElement('span');left.innerHTML='<b>〽</b>'+alertMessages[alertIndex];var time=document.createElement('time');time.textContent=now();item.appendChild(left);item.appendChild(time);parent.insertBefore(item,parent.firstChild);while(parent.children.length>4)parent.removeChild(parent.lastChild);alertIndex=(alertIndex+1)%alertMessages.length;}
-function ocrTick(){var parent=document.getElementById('ocr');var item=document.createElement('div');item.className='equation';parent.insertBefore(item,parent.firstChild);while(parent.children.length>3)parent.removeChild(parent.lastChild);lastEquation=equations[ocrIndex];typeInto(item,lastEquation);ocrIndex=(ocrIndex+1)%equations.length;}
-function seed(){captionTick();sceneTick();alertTick();ocrTick();}
-function switchMode(mode){document.querySelectorAll('.tab').forEach(function(tab){var active=tab.getAttribute('data-mode')===mode;tab.classList.toggle('active',active);tab.setAttribute('aria-selected',active?'true':'false');});document.querySelectorAll('.mode').forEach(function(panel){panel.classList.toggle('active',panel.id===mode);});}
-document.querySelectorAll('.tab').forEach(function(tab){tab.addEventListener('click',function(){switchMode(tab.getAttribute('data-mode'));});});
-document.getElementById('repeat').addEventListener('click',function(){var answer=document.getElementById('answer');answer.textContent='Repeating: '+lastEquation;});
-document.getElementById('ask').addEventListener('click',function(){var button=this,input=document.getElementById('question'),answer=document.getElementById('answer'),status=document.getElementById('status');var question=input.value.trim().toLowerCase();button.disabled=true;button.textContent='Listening…';answer.textContent='';status.textContent='Listening for 1.5 seconds…';setTimeout(function(){var result;if(question==='where is the red beaker?'){result='On the front lab bench, 2 meters to your left';}else if(question==='what did the teacher just write?'){result='Velocity equals displacement over time';}else{result='One moment - I found it: the answer is on the left whiteboard';}answer.textContent=result;status.textContent='Answer ready · 100% mock';button.disabled=false;button.textContent='Start listening';},1500);});
-seed();setInterval(captionTick,2000);setInterval(sceneTick,2400);setInterval(alertTick,2800);setInterval(ocrTick,3000);
-})();
-</script>
+<body data-mode="deaf">
+  <div class="app">
+    <header>
+      <div>
+        <div class="brand-line"><span class="badge"><i class="live-dot"></i> LIVE · demo</span></div>
+        <div class="brand">ClassBridge</div>
+        <p class="eyebrow">Classroom access, in every signal</p>
+      </div>
+      <div class="local-note">local mock stream · no network</div>
+    </header>
+
+    <nav class="mode-switch" aria-label="Accessibility mode">
+      <button class="tab" type="button" role="tab" aria-selected="true" aria-controls="deafPanel" data-mode="deaf">◈ Deaf mode</button>
+      <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="blindPanel" data-mode="blind">◉ Blind mode</button>
+    </nav>
+
+    <main>
+      <section id="deafPanel" class="mode-panel deaf active" role="tabpanel">
+        <div class="mode-head"><div><p class="eyebrow">Real-time classroom access</p><h2>Deaf mode</h2></div><span class="status"><i></i> caption stream live</span></div>
+        <div class="deaf-grid">
+          <div class="stack">
+            <article class="panel">
+              <div class="panel-label"><strong>Physics captions</strong><span class="signal">typing · 2s</span></div>
+              <div class="caption-meta"><span class="speaker" id="speakerTag">TEACHER / LIVE</span><span id="captionTime">--:--:--</span></div>
+              <p class="caption" id="captionText" aria-live="polite">Good morning class</p>
+              <div class="meter"><span></span></div>
+            </article>
+            <article class="panel">
+              <div class="panel-label"><strong>Student sign translation</strong><span class="signal">camera mock</span></div>
+              <p class="translation"><span>Translation output</span>Student signed: Can you repeat the formula?</p>
+            </article>
+            <article class="panel">
+              <div class="panel-label"><strong>Sound alert ticker</strong><span class="signal">ambient monitor</span></div>
+              <div class="ticker" id="soundTicker" aria-live="polite"></div>
+            </article>
+          </div>
+          <article class="panel avatar-panel">
+            <div class="panel-label"><strong>Signing avatar</strong><span class="signal">gesture sync</span></div>
+            <div class="avatar-art" id="avatarArt" aria-label="Inline signing avatar"></div>
+            <div class="avatar-label" id="avatarLabel">Avatar signing: HELP</div>
+            <div class="sign-chips" id="signChips" aria-label="Available sign poses"></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="blindPanel" class="mode-panel blind" role="tabpanel">
+        <div class="mode-head"><div><p class="eyebrow">Spatial and visual context</p><h2>Blind mode</h2></div><span class="status"><i></i> narration ready</span></div>
+        <div class="blind-grid">
+          <article class="panel">
+            <div class="panel-label"><strong>Scene descriptions</strong><span class="signal">streaming · 2.4s</span></div>
+            <p class="scene-text" id="sceneText" aria-live="polite">Teacher at the whiteboard</p>
+            <div class="stream-foot"><span>scene narration</span><span>LOCAL ONLY</span></div>
+          </article>
+          <article class="panel">
+            <div class="panel-label"><strong>Whiteboard OCR</strong><span class="signal">equation scan</span></div>
+            <p class="ocr-text" id="ocrText" aria-live="polite">v = d/t</p>
+            <div class="stream-foot"><span>last equation</span><button class="quick" id="repeatEquation" type="button" style="margin:0;border:0;padding:0;color:var(--amber);background:none">↻ Repeat last equation</button></div>
+          </article>
+          <article class="panel voice-panel">
+            <div class="panel-label"><strong>Mock voice Q&amp;A</strong><span class="signal">press to ask</span></div>
+            <div class="voice-log" id="voiceLog" aria-live="polite"><div class="qa-line"><strong>Assistant</strong><span>Ask about the classroom.</span></div></div>
+            <div class="ask-row"><input id="voiceInput" type="text" autocomplete="off" placeholder="Try: Where is the red beaker?"><button class="action" id="askButton" type="button">Ask</button><button class="action alt" id="voiceButton" type="button">◉ Voice mock</button></div>
+            <div class="quick"><button type="button" data-question="Where is the red beaker?">Where is the red beaker?</button><button type="button" data-question="What did the teacher just write?">What did the teacher just write?</button></div>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer>Everything here is simulated locally for a product demo · safe to open from file://</footer>
+  </div>
+
+  <script>
+    'use strict';
+    const $ = (selector) => document.querySelector(selector);
+    const $$ = (selector) => Array.from(document.querySelectorAll(selector));
+    const stamp = () => new Date().toLocaleTimeString([], { hour12: false });
+
+    const captionMessages = [
+      'Good morning class',
+      'Today: velocity and acceleration',
+      'Open your textbooks to page 42',
+      'Velocity is displacement over time',
+      'Who can tell me the formula?'
+    ];
+    const signs = ['HELP', 'YES', 'NO', 'REPEAT', 'QUESTION', 'THANK YOU'];
+    const poseSvgs = {
+      HELP: '<svg viewBox="0 0 220 180" role="img" aria-label="HELP hand pose"><path d="M80 151c-11-17-17-34-20-55l-5-36c-1-10 13-13 16-3l8 30V31c0-10 15-10 15 0v49-63c0-11 15-11 15 0v63-55c0-10 15-10 15 0v58-40c0-10 15-9 15 1v58c0 21-14 43-33 49l-26 9z" fill="#72f5be" stroke="#d4fff0" stroke-width="4" stroke-linejoin="round"/><path d="M94 116c11 6 27 6 39-1" fill="none" stroke="#10243a" stroke-width="5" stroke-linecap="round"/><path d="M48 158h126" stroke="#5de5ee" stroke-width="3" stroke-linecap="round" opacity=".6"/></svg>',
+      YES: '<svg viewBox="0 0 220 180" role="img" aria-label="YES hand pose"><path d="M105 151c-20-9-32-29-31-52l2-37c1-11 17-11 17 0l-1 21 23-60c4-10 18-5 15 5l-13 42 20-35c5-9 18-2 13 7l-17 35 20-26c6-8 18 1 12 9l-19 30 15-16c7-7 17 3 11 10-19 23-23 51-18 67z" fill="#b69cff" stroke="#efe9ff" stroke-width="4" stroke-linejoin="round"/><path d="M89 125c12 7 25 9 38 5" fill="none" stroke="#281b4b" stroke-width="5" stroke-linecap="round"/><path d="M48 158h126" stroke="#b99aff" stroke-width="3" stroke-linecap="round" opacity=".6"/></svg>',
+      NO: '<svg viewBox="0 0 220 180" role="img" aria-label="NO hand pose"><path d="M76 147c-12-14-18-29-17-47l4-54c1-10 15-10 16 0l1 25 19-49c4-10 18-4 14 6l-13 35 25-26c8-8 19 3 11 11l-26 30 34-19c9-5 16 8 7 13l-35 23 40 1c10 0 10 15 0 15l-42 1c0 13-5 25-13 37z" fill="#ff7e94" stroke="#ffe2e6" stroke-width="4" stroke-linejoin="round"/><path d="M94 112c10 5 22 4 30-1" fill="none" stroke="#471d2c" stroke-width="5" stroke-linecap="round"/><path d="M48 158h126" stroke="#ff7e94" stroke-width="3" stroke-linecap="round" opacity=".6"/></svg>',
+      REPEAT: '<svg viewBox="0 0 220 180" role="img" aria-label="REPEAT hand pose"><path d="M72 148c-10-16-12-34-7-54l11-45c3-10 17-7 15 4l-4 27 20-45c4-10 18-4 14 6l-13 36 20-25c7-8 18 1 12 9l-23 31 31-16c9-5 16 8 7 13l-32 20 34 3c10 1 9 15-1 15l-34-3c-1 13-6 24-14 34z" fill="#5de5ee" stroke="#d9feff" stroke-width="4" stroke-linejoin="round"/><path d="M83 122c13 4 25 1 35-6" fill="none" stroke="#123c4b" stroke-width="5" stroke-linecap="round"/><path d="M48 158h126" stroke="#5de5ee" stroke-width="3" stroke-linecap="round" opacity=".6"/></svg>',
+      QUESTION: '<svg viewBox="0 0 220 180" role="img" aria-label="QUESTION hand pose"><path d="M91 148c-8-19-10-37-5-57l7-38c2-10 16-9 16 1l-1 23 15-57c3-10 18-7 15 4l-8 39 17-32c5-10 19-3 14 7l-14 34 20-24c7-8 18 1 12 9l-24 31 31-14c9-4 15 9 6 14l-32 18 19 6c10 4 5 18-5 14l-35-12c-1 14-8 27-17 36z" fill="#ffd166" stroke="#fff2c9" stroke-width="4" stroke-linejoin="round"/><path d="M103 122c11 2 22-3 28-11" fill="none" stroke="#503e12" stroke-width="5" stroke-linecap="round"/><path d="M48 158h126" stroke="#ffd166" stroke-width="3" stroke-linecap="round" opacity=".6"/></svg>',
+      'THANK YOU': '<svg viewBox="0 0 220 180" role="img" aria-label="THANK YOU hand pose"><path d="M67 147c-8-18-8-36-1-55l14-39c4-10 18-5 14 5l-6 25 24-54c4-10 19-4 14 7l-17 39 24-29c7-8 19 2 12 10l-26 34 29-19c9-6 17 7 8 13l-29 20 32 1c10 1 10 16 0 16l-36-2c-2 13-9 23-19 32z" fill="#67f4b1" stroke="#d9fff0" stroke-width="4" stroke-linejoin="round"/><path d="M79 120c12 7 24 6 35-1" fill="none" stroke="#124b3a" stroke-width="5" stroke-linecap="round"/><path d="M48 158h126" stroke="#67f4b1" stroke-width="3" stroke-linecap="round" opacity=".6"/></svg>'
+    };
+
+    const signChips = $('#signChips');
+    signs.forEach((sign) => {
+      const chip = document.createElement('span');
+      chip.className = 'sign-chip';
+      chip.dataset.sign = sign;
+      chip.textContent = sign;
+      signChips.appendChild(chip);
+    });
+    const captionText = $('#captionText');
+    const captionTime = $('#captionTime');
+    const avatarArt = $('#avatarArt');
+    const avatarLabel = $('#avatarLabel');
+    let captionIndex = 0;
+    let captionTyping;
+
+    function setCurrentSign(sign) {
+      avatarArt.innerHTML = poseSvgs[sign];
+      avatarLabel.textContent = 'Avatar signing: ' + sign;
+      $$('.sign-chip').forEach((chip) => chip.classList.toggle('current', chip.dataset.sign === sign));
+    }
+    function typeText(element, text, done) {
+      if (element._typing) clearInterval(element._typing);
+      element.textContent = '';
+      let position = 0;
+      element._typing = setInterval(() => {
+        element.textContent += text.charAt(position++);
+        if (position >= text.length) {
+          clearInterval(element._typing);
+          element._typing = null;
+          if (done) done();
+        }
+      }, 24);
+    }
+    function streamCaption() {
+      const message = captionMessages[captionIndex];
+      const sign = signs[captionIndex % signs.length];
+      captionTime.textContent = stamp();
+      setCurrentSign(sign);
+      typeText(captionText, message);
+      captionIndex = (captionIndex + 1) % captionMessages.length;
+    }
+    streamCaption();
+    captionTyping = setInterval(streamCaption, 2000);
+
+    const soundMessages = ['Fire alarm detected', 'Bell rang', 'Name called: Tobi', 'Applause detected'];
+    const ticker = $('#soundTicker');
+    let soundIndex = 0;
+    function addSoundAlert() {
+      const row = document.createElement('div');
+      row.className = 'ticker-row';
+      row.innerHTML = '<span class="buzz" aria-hidden="true">⌁</span><span></span><time class="tick-time"></time>';
+      row.children[1].textContent = soundMessages[soundIndex];
+      row.children[2].textContent = stamp();
+      ticker.prepend(row);
+      while (ticker.children.length > 4) ticker.lastElementChild.remove();
+      soundIndex = (soundIndex + 1) % soundMessages.length;
+    }
+    addSoundAlert();
+    setInterval(addSoundAlert, 2600);
+
+    const sceneMessages = ['Teacher at the whiteboard', 'Diagram: triangle with labeled sides', 'Someone raised their hand in row 2'];
+    const ocrMessages = ['v = d/t', 'a = (v-u)/t', 'velocity = displacement / time'];
+    let sceneIndex = 0;
+    let ocrIndex = 0;
+    function streamScene() { typeText($('#sceneText'), sceneMessages[sceneIndex]); sceneIndex = (sceneIndex + 1) % sceneMessages.length; }
+    function streamOcr() { $('#ocrText').textContent = ocrMessages[ocrIndex]; ocrIndex = (ocrIndex + 1) % ocrMessages.length; }
+    streamScene();
+    streamOcr();
+    setInterval(streamScene, 2400);
+    setInterval(streamOcr, 2800);
+
+    const answers = {
+      'where is the red beaker?': 'On the front lab bench, 2 meters to your left',
+      'what did the teacher just write?': 'Velocity equals displacement over time'
+    };
+    const voiceInput = $('#voiceInput');
+    const voiceLog = $('#voiceLog');
+    function addQuestion(question) {
+      const userLine = document.createElement('div');
+      userLine.className = 'qa-line user';
+      userLine.innerHTML = '<strong>You</strong><span></span>';
+      userLine.children[1].textContent = question;
+      voiceLog.appendChild(userLine);
+      const pending = document.createElement('div');
+      pending.className = 'qa-line pending';
+      pending.innerHTML = '<strong>Assistant</strong><span>listening...</span>';
+      voiceLog.appendChild(pending);
+      voiceLog.scrollTop = voiceLog.scrollHeight;
+      setTimeout(() => {
+        const normalized = question.trim().toLowerCase();
+        pending.classList.remove('pending');
+        pending.children[1].textContent = answers[normalized] || 'One moment - I found it: the answer is on the left whiteboard';
+      }, 1500);
+    }
+    function ask() {
+      const question = voiceInput.value.trim() || 'Where is the red beaker?';
+      voiceInput.value = '';
+      addQuestion(question);
+    }
+    $('#askButton').addEventListener('click', ask);
+    $('#voiceButton').addEventListener('click', ask);
+    voiceInput.addEventListener('keydown', (event) => { if (event.key === 'Enter') ask(); });
+    $$('[data-question]').forEach((button) => button.addEventListener('click', () => addQuestion(button.dataset.question)));
+    $('#repeatEquation').addEventListener('click', () => {
+      const lastEquation = ocrMessages[(ocrIndex + ocrMessages.length - 1) % ocrMessages.length];
+      $('#ocrText').textContent = lastEquation;
+      $('#ocrText').animate([{ opacity: .35 }, { opacity: 1 }], { duration: 450, easing: 'ease-out' });
+    });
+
+    $$('.tab').forEach((tab) => tab.addEventListener('click', () => {
+      const mode = tab.dataset.mode;
+      document.body.dataset.mode = mode;
+      $$('.tab').forEach((item) => item.setAttribute('aria-selected', String(item === tab)));
+      $$('.mode-panel').forEach((panel) => panel.classList.toggle('active', panel.id === mode + 'Panel'));
+    }));
+  </script>
 </body>
 </html>
